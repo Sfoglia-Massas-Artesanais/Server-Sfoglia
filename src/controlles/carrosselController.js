@@ -2,7 +2,6 @@ import { PrismaClient } from "../../generated/prisma/index.js";
 
 const prisma = new PrismaClient();
 
-// 🔹 Listar todas as imagens do carousel
 export const getImagens = async (req, res) => {
   try {
     const imagens = await prisma.carousel.findMany();
@@ -13,7 +12,6 @@ export const getImagens = async (req, res) => {
   }
 };
 
-// 🔹 Adicionar uma imagem ao carousel
 export const addImagem = async (req, res) => {
   try {
     const { url } = req.body;
@@ -33,7 +31,6 @@ export const addImagem = async (req, res) => {
   }
 };
 
-// 🔹 Deletar imagem do carousel
 export const deleteImagem = async (req, res) => {
   try {
     const { id } = req.params;

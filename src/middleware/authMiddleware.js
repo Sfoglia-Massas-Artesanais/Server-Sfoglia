@@ -7,7 +7,6 @@ export const authMiddleware = (req, res, next) => {
     return res.status(401).json({ message: "Token não fornecido" });
   }
 
-  // O token vem no formato "Bearer TOKEN"
   const token = authHeader.split(" ")[1];
 
   if (!token) {
@@ -16,8 +15,8 @@ export const authMiddleware = (req, res, next) => {
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = decoded; // salva os dados do usuário no request
-    next(); // libera a rota
+    req.user = decoded;
+    next();
   } catch (err) {
     return res.status(401).json({ message: "Token inválido ou expirado" });
   }

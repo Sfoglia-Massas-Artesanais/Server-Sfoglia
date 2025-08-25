@@ -15,6 +15,5 @@ app.use("/carrossel", carrosselRoutes);
 app.use("/auth", authRoutes);
 app.use("/pratos", pratoRoutes);
 
-app.listen(5000, () => {
-  console.log("Server is running on http://localhost:5000");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));

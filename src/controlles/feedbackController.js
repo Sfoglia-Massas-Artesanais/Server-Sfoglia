@@ -8,16 +8,14 @@ export const enviarFeedback = async (req, res) => {
   }
 
   try {
-    // Configuração do transporte (exemplo usando Gmail)
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
-        user: process.env.MAIL_USER, // seu e-mail remetente
-        pass: process.env.MAIL_PASS, // senha ou App Password
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
       },
     });
 
-    // Email
     await transporter.sendMail({
       from: `"Feedback Sfoglia" <${process.env.MAIL_USER}>`,
       to: "sfogliasuporte@gmail.com",
