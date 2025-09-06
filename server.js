@@ -9,9 +9,9 @@ const app = express();
 
 const allowedOrigins = [
   "http://localhost:5500",
-  "http://127.0.0.1:5500/",
+  "http://127.0.0.1:5500",
   "https://server-sfoglia.onrender.com",
-  "https://sfoglia-massas-artesanais.github.io/Sfogliafiennos/",
+  "https://sfoglia-massas-artesanais.github.io/Sfogliafiennos",
 ];
 
 app.use(
@@ -21,7 +21,7 @@ app.use(
         callback(null, true);
       } else {
         console.log("🚫 Bloqueado por CORS:", origin);
-        callback(new Error("Not allowed by CORS"));
+        callback(null, false);
       }
     },
     credentials: true,
@@ -29,10 +29,12 @@ app.use(
 );
 
 app.use(express.json());
+
 app.use("/feedback", feedbackRoutes);
 app.use("/carrossel", carrosselRoutes);
 app.use("/auth", authRoutes);
 app.use("/pratos", pratoRoutes);
+
 app.get("/", (req, res) => {
   res.send("🍝 Sfoglia Backend rodando com sucesso!");
 });
