@@ -36,8 +36,8 @@ app.use("/auth", authRoutes);
 app.use("/pratos", pratoRoutes);
 
 app.get("/", (req, res) => {
-  res.send("🍝 Sfoglia Backend rodando com sucesso!");
+  res.send("Sfoglia Backend rodando com sucesso!");
 });
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`🚀 Servidor rodando na porta ${PORT}`));
+app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
